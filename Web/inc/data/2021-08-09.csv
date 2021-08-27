@@ -1,0 +1,51 @@
+ProductId	ProductName	Unit	SupplierId	Quantity	Price	Category	EntryDate
+1	Bacon	oz	7	-180.75	329.52	Meat	2020-10-14
+2	"BBQ Wings"	unit	4	-140	13.44	Meat	2021-01-09
+3	Beef	oz	4	-123	264.38	Meat	2021-05-06
+4	"Black Olives"	oz	7	-13.5	78.43	Vegetable	2020-08-19
+5	Breadsticks	unit	11	28	151.26	Bakery	2020-12-27
+6	Brownie	unit	11	67	375.25	Bakery	2021-02-25
+7	"Buffalo Wings"	unit	2	-140	364.59	Meat	2020-08-20
+8	"Canadian Bacon"	oz	13	-3.75	49.88	Meat	2020-07-12
+9	"Cheese Sticks"	unit	17	-38	246.65	Dairy	2021-01-12
+10	Chicken	oz	13	15.75	345.34	Meat	2020-07-19
+11	"Cinnamon Roll"	unit	13	54	36.47	Bakery	2020-07-05
+12	Coca-cola	unit	6	48	376.98	Drink	2020-10-29
+13	Cookie	unit	8	73	382.56	Bakery	2020-10-01
+14	Cutlery	unit	11	100	265.71	Cutlery	2020-07-06
+15	"Dessert Box"	unit	9	54	115.34	Cutlery	2021-03-03
+16	"Dessert Paper Bag"	unit	10	40	87.31	Cutlery	2020-09-09
+17	Flour	oz	6	-676.84	76.03	Bakery	2020-10-01
+18	"Garlic Parmesan Breadsticks"	unit	17	-200	300.77	Bakery	2021-01-23
+19	"Green Peppers"	oz	12	-13.5	244.99	Vegetable	2020-08-03
+20	"Iced Tea"	unit	15	83	20.12	Drink	2020-05-10
+21	Mozzarella	oz	7	-933	283.01	Dairy	2020-10-15
+22	Mushrooms	oz	12	-126.5	319.9	Vegetable	2021-02-20
+23	Napkins	unit	5	-671	141.61	Cutlery	2020-11-20
+24	"Olive Oil"	ml	8	-6394.05	118.06	Bakery	2020-05-22
+25	Onions	oz	9	-64.5	26.61	Vegetable	2020-05-15
+26	"Orange Fanta"	unit	18	-18	262.87	Drink	2020-08-05
+27	Pepperoni	oz	15	-117.24	302.42	Meat	2021-04-24
+28	Pineapple	oz	4	-53.5	69.26	Vegetable	2021-05-13
+29	"Pizza Box L"	unit	15	-47	240.78	Cutlery	2020-04-01
+30	"Pizza Box M"	unit	6	27	337.84	Cutlery	2020-04-13
+31	"Pizza Box S"	unit	16	50	10.71	Cutlery	2020-03-30
+32	Salt	oz	17	-8.29	31.28	Bakery	2021-01-13
+33	Sauce	oz	6	-806.04	141.83	Sauce	2020-08-22
+34	Sausage	oz	1	-460	102.84	Meat	2020-07-20
+35	"Sides Box"	unit	5	-40	104.34	Cutlery	2020-02-09
+36	"Sparkling Water"	unit	3	62	275.37	Drink	2020-11-09
+37	Sprite	unit	17	76	184.41	Drink	2020-04-27
+38	Straw	unit	13	-113	179.45	Cutlery	2020-09-02
+39	Sugar	oz	12	-31.27	284.38	Bakery	2020-06-20
+40	Water	unit	16	52	238.94	Drink	2021-04-11
+41	Yeast	oz	12	-25.53	154.53	Bakery	2020-08-03
+42	"Napkin White - Starched"	bag	16	89	263.02	Seafood	2020-09-09
+43	"Bread - Italian Roll With Herbs"	box	18	2	391.43	Confection	2020-01-22
+44	"Soup - Verve - Chipotle Chicken"	glass	8	12	163.88	"Dairy Product"	2020-06-10
+45	"Veal - Chops, Split, Frenched"	box	6	54	137.14	Seafood	2020-12-16
+46	"Wine - White, Cooking"	mg	16	55	260.37	Confection	2020-01-24
+47	"Mackerel Whole Fresh"	piece	5	25	110.12	Produce	2020-01-17
+48	"Rum - Cream, Amarula"	lb	15	65	374.23	Confection	2020-03-31
+49	"Water - Green Tea Refresher"	bottle	8	7	77.91	Condiment	2021-01-21
+50	"Wine - Touraine Azay - Le - Rideau"	glass	1	86	364.28	Meat/Poultry	2020-10-06
