@@ -6,3 +6,8 @@ define("MONGO_DB_USER","admin");
 define("MONGO_DB_PASS","admin");
 define("MONGO_DB_NAME","aioRestaurants");
 define("MONGO_DB_HOST","@cluster0.usuw1.mongodb.net");
+
+/*
+gmail: csis4280victorgustavo@gmail.com | R$&S,Qt7CscU<`ej
+atlas: csis4280victorgustavo@gmail.com | dTL@?2?qqjRLV_8P
+*/
