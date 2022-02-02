@@ -19,7 +19,7 @@
 
         
         //MONGO URL CONNECTION
-        private static $mongoUrl;
+        public static $mongoUrl;
 
         //Counter
         private static $counter;
