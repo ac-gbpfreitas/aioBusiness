@@ -45,12 +45,13 @@
         #$login #$pass #$db and #$cluster
         private static function defineMongoConnection(){
             try{
-                
+                /*
                 self::$mongoUrl = "mongodb+srv://";
                 self::$mongoUrl .= self::$mongoUser.":".self::$mongoPass;
                 self::$mongoUrl .= self::$mongoHost."/";
                 self::$mongoUrl .= self::$mongoName."?retryWrites=true&w=majority";
-
+                */
+                self::$mongoUrl = getEnv(MONGODB_URI);
                 //Test connection with the MongoDB
                 if(!self::testConnection()){
                     throw new Exception(
