@@ -1,3 +1,7 @@
 {
-  
+    "name": "Gustavo Freitas",
+    "require": {
+        "php": "7.1.0",
+        "ext-mongodb": "1.12.0"
+    }
 }
