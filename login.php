@@ -3,7 +3,7 @@
 require_once("inc/Utilities/RestAPI.class.php");
 require_once("inc/Utilities/LoginManager.class.php");
 require_once("inc/Utilities/Page.class.php");
-var_dump(MONGODB_URI);
+
 if(!empty($_POST)){
 
     if( isset($_POST['usernameL'])){
