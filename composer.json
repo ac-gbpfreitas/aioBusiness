@@ -4,7 +4,10 @@
             "name": "Gustavo Freitas",
             "email": "ac.gbpfreitas@gmail.com",
             "homepage": "https://ac-gbpfreitas.github.io",
-            "role": "PHP Software Developer"
+            "role": "PHP Web Developer"
         }
-    ]
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.11"
+    }
 }
