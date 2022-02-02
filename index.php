@@ -189,7 +189,9 @@ if(!empty($_GET["page"])){
     }
 
 } else {
-    header("Location: login.php");
+    var_dump(MONGODB_URI);
+    var_dump(PDOMongo::$mongoUrl);
+    //header("Location: login.php");
 }
 
 Page::pageContentBottom();
