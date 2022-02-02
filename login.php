@@ -5,9 +5,6 @@ require_once("inc/Utilities/LoginManager.class.php");
 require_once("inc/Utilities/Page.class.php");
 require_once("inc/Database/PDOMongo.class.php");
 
-var_dump(MONGODB_URI);
-var_dump(PDOMongo::$mongoUrl);
-
 if(!empty($_POST)){
 
     if( isset($_POST['usernameL'])){
