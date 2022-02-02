@@ -5,7 +5,7 @@ require_once("inc/Utilities/LoginManager.class.php");
 require_once("inc/Utilities/Page.class.php");
 require_once("inc/Database/PDOMongo.class.php");
 
-var_dump(PDOMongo::$mongoUrl);
+// var_dump(PDOMongo::$mongoUrl);
 
 if(!empty($_POST)){
 
