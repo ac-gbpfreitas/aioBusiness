@@ -3,7 +3,7 @@
 require_once("inc/Utilities/RestAPI.class.php");
 require_once("inc/Utilities/LoginManager.class.php");
 require_once("inc/Utilities/Page.class.php");
-reuire_once("inc/Database/PDOMongo.class.php");
+require_once("inc/Database/PDOMongo.class.php");
 
 var_dump(PDOMongo::$mongoUrl);
 
