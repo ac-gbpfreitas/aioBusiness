@@ -3,7 +3,6 @@
 require_once("inc/Utilities/RestAPI.class.php");
 require_once("inc/Utilities/LoginManager.class.php");
 require_once("inc/Utilities/Page.class.php");
-require_once("inc/Database/PDOMongo.class.php");
 
 if(!empty($_POST)){
 
