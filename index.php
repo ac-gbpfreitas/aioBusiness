@@ -190,6 +190,7 @@ if(!empty($_GET["page"])){
 
 } else {
     //header("Location: login.php");
+    header("Location: index.php");
 }
 
 Page::pageContentBottom();
