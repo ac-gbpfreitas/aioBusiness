@@ -14,6 +14,7 @@ require_once("inc/Utilities/Html/FormHtml.class.php");
 require_once("inc/Utilities/Html/ChartPage.class.php");
 
 require_once("inc/Database/PDOMongo.class.php");
+require_once("inc/Utilities/Converters/ProductInventoryConverter.class.php");
 
 Page::pageHeader();
 
@@ -23,7 +24,9 @@ if(!empty($_GET["page"])){
     $newCon = new PDOMongo("productInventory");
     $newCon::bindElement("productId",5);
     $result = $newCon->findData([],1);
-    var_dump($result);
+    var_dump(
+        ProductInventoryConverter::convertFromStdClass($result)
+    );
 
     if($_GET["page"] == "dashboard"){
 
