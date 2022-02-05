@@ -26,13 +26,12 @@ if(!empty($_GET["page"])){
     */
     $newCon = new PDOMongo("employee");
     $newCon->bindElement("employeeId",$_id);
-    var_dump(method_exists($newCon,"findData"));
     
-    /*var_dump($newCon::findData(
+    var_dump($newCon::findData(
                         [],
                         1
                     ));
-    */
+    
     if($_GET["page"] == "dashboard"){
 
         Page::pageLeftMenu();
