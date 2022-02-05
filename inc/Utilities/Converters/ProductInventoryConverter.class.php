@@ -53,7 +53,7 @@
 
                 } else if(get_class($data) == "ProductInventory"){
                     return self::parseToStd($data);
-                    
+
                 } else {
                     throw new Exception("This is not a valid Inventory object!");
                 }
@@ -83,7 +83,7 @@
 
         private static function parseToStd(ProductInventory $nProduct) : stdClass{
 
-            $newProduct = new stdClass();
+            $newProduct = new stdClass;
             $newProduct->productId      = $nProduct->getProductId();
             $newProduct->productName    = $nProduct->getProductName();
             $newProduct->unity          = $nProduct->getUnit();

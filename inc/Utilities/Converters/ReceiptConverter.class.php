@@ -48,7 +48,7 @@
             $dishesArray = [];
 
             for($i = 0; $i < count($nReceipt->getDishes()); $i++){
-                $stdDish = new stdClass();
+                $stdDish = new stdClass;
                 $stdDish->name = $nReceipt->getDishes()[$i]->name;
                 $stdDish->price = $nReceipt->getDishes()[$i]->price;
                 $stdDish->qty = $nReceipt->getDishes()[$i]->qty;
@@ -56,7 +56,7 @@
                 $dishesArray[] = $stdDish;
             }
 
-            $stdClass = new stdClass();
+            $stdClass = new stdClass;
             $stdClass->server = $nReceipt->getServer();
             $stdClass->emploeeId = $nReceipt->getEmployeeId();
             $stdClass->taxes = $nReceipt->getTaxes();

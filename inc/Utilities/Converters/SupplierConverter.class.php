@@ -123,12 +123,12 @@
         }
 
         private static function parseToStd(Supplier $newSupplier) : stdClass{
-            $stdSupplier = new stdClass();
+            $stdSupplier = new stdClass;
             $productsStdArray = [];
 
             for($j = 0; $j < count($newSupplier->getProducts()); $j++){
 
-                $newProduct = new stdClass();
+                $newProduct = new stdClass;
                 $newProduct->productId   = $newSupplier->getProducts()[$j]->getProductId();
                 $newProduct->productName = $newSupplier->getProducts()[$j]->getProductName();
                 $newProduct->unity       = $newSupplier->getProducts()[$j]->getUnity();

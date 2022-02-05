@@ -74,7 +74,7 @@
         }
         
         private static function parseToStd(Dish $dish) : stdClass {
-            $stdClass = new stdClass();
+            $stdClass = new stdClass;
             
             if( $dish->getId() != null ) {
                 $stdClass->_id = $dish->getId();

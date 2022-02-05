@@ -101,7 +101,7 @@ class ShipperConverter{
 
     private static function parseToStd(Shipper $newShipper) : stdClass{
 
-        $stdShipper = new stdClass();
+        $stdShipper = new stdClass;
         
         $stdShipper->shipperId   = $newShipper->getShipperId();
         $stdShipper->shipperName = $newShipper->getShipperName();

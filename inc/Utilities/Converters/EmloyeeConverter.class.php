@@ -71,7 +71,7 @@
         }
 
         private static function parseToStd(Employee $employee) : stdClass{
-            $stdClass = new stdClass();
+            $stdClass = new stdClass;
 
             if( $employee->getId() != null ) {
                 $stdClass->_id = $employee->getId();
