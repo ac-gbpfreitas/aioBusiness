@@ -17,7 +17,7 @@ Page::pageHeader();
 
 if(!empty($_GET["page"])){
 
-    //LoginManager::checkLogin();
+    LoginManager::checkLogin();
 
     if($_GET["page"] == "dashboard"){
 
@@ -189,8 +189,8 @@ if(!empty($_GET["page"])){
     }
 
 } else {
-    //header("Location: login.php");
-    header("Location: index.php?page=dashboard");
+    header("Location: login.php");
+    //header("Location: index.php?page=dashboard");
 }
 
 Page::pageContentBottom();
