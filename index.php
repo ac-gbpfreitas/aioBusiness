@@ -13,7 +13,10 @@ require_once("inc/Utilities/Html/TablePage.class.php");
 require_once("inc/Utilities/Html/FormHtml.class.php");
 require_once("inc/Utilities/Html/ChartPage.class.php");
 
-require_once("inc/Database/PDOMongo.class.php");
+require_once("inc/Utilities/ProductInventoryDAO.class.php");
+
+ProductInventoryDAO::startDb();
+var_dump(ProductInventoryDAO::getMultipleProducts(1));
 
 Page::pageHeader();
 
