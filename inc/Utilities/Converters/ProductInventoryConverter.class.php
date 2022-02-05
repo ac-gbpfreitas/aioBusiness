@@ -9,15 +9,19 @@
                     $inventoryArray = [];
 
                     for($i = 0; $i < count($data); $i++){
-
-                        array_push(
-                            $inventoryArray,
-                            self::parseToProduct($data[$i])
-                        );
+                        if( get_class($data[$i]) == "stdClass"){
+                            array_push(
+                                $inventoryArray,
+                                self::parseToProduct($data[$i])
+                            );
+                        } else {
+                            throw new Exception("This is not a valid stdClass! - $i");
+                        }
+                        
                     }
                     return $inventoryArray;
                     
-                } else if(get_class($data) == "ProductInventory"){
+                } else if(get_class($data) == "stdClass"){
 
                     return self::parseToProduct($data);
 
@@ -35,21 +39,22 @@
                     $inventoryArray = [];
 
                     for($i = 0; $i < count($data); $i++){
-                        
+                        if( get_class($data[$i]) == "ProductInventory" ) {
 
-                        array_push(
-                            $inventoryArray,
-                            self::parseToStd($data[$i])
-                        );
+                            array_push(
+                                $inventoryArray,
+                                self::parseToStd($data[$i])
+                            );
+                        } else {
+                            throw new Exception("This is not a valid Inventory object!");
+                        }
                     }
-                    
                     return $inventoryArray;
 
                 } else if(get_class($data) == "ProductInventory"){
-
                     return self::parseToStd($data);
-                } else {
                     
+                } else {
                     throw new Exception("This is not a valid Inventory object!");
                 }
             }catch(Exception $errorMessage){
