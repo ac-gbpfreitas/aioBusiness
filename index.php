@@ -15,9 +15,6 @@ require_once("inc/Utilities/Html/ChartPage.class.php");
 
 require_once("inc/Utilities/ProductInventoryDAO.class.php");
 
-ProductInventoryDAO::startDb();
-var_dump(ProductInventoryDAO::getMultipleProducts(1));
-
 Page::pageHeader();
 
 if(!empty($_GET["page"])){
