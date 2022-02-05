@@ -13,20 +13,11 @@ require_once("inc/Utilities/Html/TablePage.class.php");
 require_once("inc/Utilities/Html/FormHtml.class.php");
 require_once("inc/Utilities/Html/ChartPage.class.php");
 
-require_once("inc/Database/PDOMongo.class.php");
-require_once("inc/Utilities/Converters/ProductInventoryConverter.class.php");
-
 Page::pageHeader();
 
 if(!empty($_GET["page"])){
 
     //LoginManager::checkLogin();
-    $newCon = new PDOMongo("productInventory");
-    $newCon::bindElement("productId",5);
-    $result = $newCon->findData([],1);
-    var_dump(
-        ProductInventoryConverter::convertFromStdClass($result)[0]->getProductName()
-    );
 
     if($_GET["page"] == "dashboard"){
 
