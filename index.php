@@ -69,7 +69,7 @@ if(!empty($_GET["page"])){
                         RestAPI::getData("ProductInventory")
                     );
                     */
-                    var_dump(RestAPI::getData("ProductInventory"));
+                    var_dump(RestAPI::getData("ProductInventory",1));
                 break;
 
                 case "supplier":
