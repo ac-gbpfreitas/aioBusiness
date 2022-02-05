@@ -106,7 +106,7 @@
                     $deleteQuery
                 );
                
-                self::$connection->getDatabase()->bind(
+                self::$connection->getDatabase()::bind(
                     ':id', $newShipper->getShipperId()
                 );
 
@@ -119,9 +119,9 @@
 
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
-                self::$connection->getDatabase()->bindElement("shipperId",$_id);
+                self::$connection->getDatabase()::bindElement("shipperId",$_id);
                 $newShipper = ShipperConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData(
+                    self::$connection->getDataBase()->findData(
                         [],
                         1
                     )
@@ -132,7 +132,7 @@
                 $sqlSelect = "SELECT * FROM shipper WHERE shipperId =:id";
 
                 self::$connection->getDatabase()->query($sqlSelect);
-                self::$connection->getDatabase()->bind(':id',$_id);
+                self::$connection->getDatabase()::bind(':id',$_id);
                 self::$connection->getDatabase()->execute();
 
                 return self::$connection->singleResult();
@@ -145,7 +145,7 @@
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
                 $shipperArray = ShipperConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData([],$limit)
+                    self::$connection->getDataBase()->findData([],$limit)
                 );
     
                 return $shipperArray;

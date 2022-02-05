@@ -101,7 +101,7 @@
                     $deleteQuery
                 );
                
-                self::$connection->getDatabase()->bind(
+                self::$connection->getDatabase()::bind(
                     ':id', $newOrder->getSupplierId()
                 );
                 
@@ -115,9 +115,9 @@
 
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
-                self::$connection->getDatabase()->bindElement("orderId",$_id);
+                self::$connection->getDatabase()::bindElement("orderId",$_id);
                 $newOrder = OrderConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData(
+                    self::$connection->getDataBase()->findData(
                         [],
                         1
                     )
@@ -128,7 +128,7 @@
                 $sqlSelect = "SELECT * FROM order WHERE orderId =:id";
 
                 self::$connection->getDatabase()->query($sqlSelect);
-                self::$connection->getDatabase()->bind(':id',$_id);
+                self::$connection->getDatabase()::bind(':id',$_id);
                 self::$connection->getDatabase()->execute();
 
                 return self::$connection->singleResult();
@@ -141,7 +141,7 @@
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
                 $orderArray = OrderConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData([],$limit)
+                    self::$connection->getDataBase()->findData([],$limit)
                 );
     
                 return $orderArray;
@@ -222,7 +222,7 @@
                 $deleteQuery
             );
             
-            self::$connection->getDatabase()->bind(
+            self::$connection->getDatabase()::bind(
                 ':id', $newOrder->getSupplierId()
             );
 

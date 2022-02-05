@@ -106,7 +106,7 @@
                     $deleteQuery
                 );
                
-                self::$connection->getDatabase()->bind(
+                self::$connection->getDatabase()::bind(
                     ':id', $newSupplier->getSupplierId()
                 );
                 
@@ -120,9 +120,9 @@
 
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
-                self::$connection->getDatabase()->bindElement("supplierId",$_id);
+                self::$connection->getDatabase()::bindElement("supplierId",$_id);
                 $newSupplier = SupplierConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData(
+                    self::$connection->getDataBase()->findData(
                         [],
                         1
                     )
@@ -133,7 +133,7 @@
                 $sqlSelect = "SELECT * FROM supplier WHERE supplierId =:id";
 
                 self::$connection->getDatabase()->query($sqlSelect);
-                self::$connection->getDatabase()->bind(':id',$_id);
+                self::$connection->getDatabase()::bind(':id',$_id);
                 self::$connection->getDatabase()->execute();
 
                 return self::$connection->singleResult();
@@ -146,7 +146,7 @@
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
                 $supplierArray = SupplierConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData([],$limit)
+                    self::$connection->getDataBase()->findData([],$limit)
                 );
     
                 return $supplierArray;
@@ -229,7 +229,7 @@
                 $deleteQuery
             );
             
-            self::$connection->getDatabase()->bind(
+            self::$connection->getDatabase()::bind(
                 ':id', $newSupplier->getSupplierId()
             );
 

@@ -100,7 +100,7 @@
                     $deleteQuery
                 );
                
-                self::$connection->getDatabase()->bind(
+                self::$connection->getDatabase()::bind(
                     ':id', $newProduct->getProductId()
                 );
 
@@ -113,9 +113,9 @@
 
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
-                self::$connection->getDatabase()->bindElement("productId",$_id);
+                self::$connection->getDatabase()::bindElement("productId",$_id);
                 $newProduct = ProductInventoryConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData(
+                    self::$connection->getDataBase()->findData(
                         [],
                         1
                     )
@@ -126,7 +126,7 @@
                 $sqlSelect = "SELECT * FROM productInventory WHERE productId =:id";
 
                 self::$connection->getDatabase()->query($sqlSelect);
-                self::$connection->getDatabase()->bind(':id',$_id);
+                self::$connection->getDatabase()::bind(':id',$_id);
                 self::$connection->getDatabase()->execute();
 
                 return self::$connection->singleResult();
@@ -139,7 +139,7 @@
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
                 $productArray = ProductInventoryConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData([],$limit)
+                    self::$connection->getDataBase()->findData([],$limit)
                 );
     
                 return $productArray;

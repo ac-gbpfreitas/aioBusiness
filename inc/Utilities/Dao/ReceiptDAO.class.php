@@ -22,7 +22,7 @@
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
                 $receiptArray = ReceiptConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData("_id",$_id)
+                    self::$connection->getDataBase()->findData("_id",$_id)
                 );
     
                 return $receiptArray;
@@ -33,7 +33,7 @@
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
                 $receiptArray = ReceiptConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData([],$limit)
+                    self::$connection->getDataBase()->findData([],$limit)
                 );
     
                 return $receiptArray;

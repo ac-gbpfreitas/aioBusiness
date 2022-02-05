@@ -66,6 +66,7 @@
                 return self::$connection->getDataBase()->updateData(
                     EmployeeConverter::convertToStdClass($newEmployee)
                 );
+                var_dump($newEmployee);
 
             } else {
                 $sqlUpdate  = "UPDATE employee SET";
@@ -117,7 +118,7 @@
                     $deleteQuery
                 );
                
-                self::$connection->getDatabase()->bind(
+                self::$connection->getDatabase()::bind(
                     ':id', $newEmployee->getEmployeeId()
                 );
                 self::$connection->getDatabase()->execute();
@@ -134,7 +135,7 @@
                 self::$connection->getDatabase()::bindElement("employeeId",$_id);
                 
                 $newEmployee = EmployeeConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData(
+                    self::$connection->getDataBase()->findData(
                         [],
                         1
                     )
@@ -147,7 +148,7 @@
                 $sqlSelect = "SELECT * FROM employee WHERE employeeId =:id";
 
                 self::$connection->getDatabase()->query($sqlSelect);
-                self::$connection->getDatabase()->bind(':id',$_id);
+                self::$connection->getDatabase()::bind(':id',$_id);
                 self::$connection->getDatabase()->execute();
 
                 return self::$connection->singleResult();
@@ -160,7 +161,7 @@
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
                 $employeeArray = EmployeeConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData([],$limit)
+                    self::$connection->getDataBase()->findData([],$limit)
                 );
                 
                 return $employeeArray;
@@ -182,9 +183,9 @@
 
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
-                self::$connection->getDatabase()->bindElement("email",$email);
+                self::$connection->getDatabase()::bindElement("email",$email);
                 
-                return self::$connection->getDatabase()::findData(
+                return self::$connection->getDatabase()->findData(
                     ["email"],
                     1
                 )[0];
@@ -195,10 +196,10 @@
         public static function getUser($username) {
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
-                self::$connection->getDatabase()->bindElement("username",$username);
+                self::$connection->getDatabase()::bindElement("username",$username);
                 
                 $newUser = UserSessionConverter::convertFromStdClass(
-                    self::$connection->getDataBase()::findData(
+                    self::$connection->getDataBase()->findData(
                         [],
                         1
                     )[0]
@@ -211,7 +212,7 @@
                 $sqlSelect = "SELECT * FROM employee WHERE username =:username";
 
                 self::$connection->getDatabase()->query($sqlSelect);
-                self::$connection->getDatabase()->bind(':username',$username);
+                self::$connection->getDatabase()::bind(':username',$username);
                 self::$connection->getDatabase()->execute();
 
                 return self::$connection->singleResult();
