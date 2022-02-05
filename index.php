@@ -13,11 +13,20 @@ require_once("inc/Utilities/Html/TablePage.class.php");
 require_once("inc/Utilities/Html/FormHtml.class.php");
 require_once("inc/Utilities/Html/ChartPage.class.php");
 
+require_once("inc/Database/PDOMongo.class.php");
+
 Page::pageHeader();
 
 if(!empty($_GET["page"])){
 
     //LoginManager::checkLogin();
+    
+    /*
+    Test Connection
+    */
+    $newCon = new PDOMongo("employee");
+    var_dump($newCon);
+    var_dump(PDOMongo::$mongoUrl);
 
     if($_GET["page"] == "dashboard"){
 
