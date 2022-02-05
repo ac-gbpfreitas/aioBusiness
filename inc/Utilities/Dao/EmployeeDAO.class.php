@@ -66,7 +66,6 @@
                 return self::$connection->getDataBase()->updateData(
                     EmployeeConverter::convertToStdClass($newEmployee)
                 );
-                var_dump($newEmployee);
 
             } else {
                 $sqlUpdate  = "UPDATE employee SET";
@@ -132,7 +131,7 @@
 
             if( get_class(self::$connection->getDataBase()) == "PDOMongo"){
 
-                self::$connection->getDatabase()->bindElement("employeeId",$_id);
+                self::$connection->getDatabase()::bindElement("employeeId",$_id);
                 
                 $newEmployee = EmployeeConverter::convertFromStdClass(
                     self::$connection->getDataBase()::findData(
