@@ -11,7 +11,7 @@
         private $entryDate;
         private $outDate;
 
-        public function ProductInventory(
+        public function __construct(
             $id,$name,$un,
             $supplierId,$qty,$price,$category,
             $inDate
