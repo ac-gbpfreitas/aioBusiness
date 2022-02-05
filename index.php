@@ -25,7 +25,7 @@ if(!empty($_GET["page"])){
     Test Connection
     */
     $newCon = new PDOMongo("employee");
-    $newCon->bindElement("employeeId",$_id);
+    $newCon->bindElement("employeeId",3);
     
     var_dump($newCon::findData(
                         [],
