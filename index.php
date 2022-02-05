@@ -25,9 +25,14 @@ if(!empty($_GET["page"])){
     Test Connection
     */
     $newCon = new PDOMongo("employee");
-    var_dump($newCon);
-    var_dump(PDOMongo::$mongoUrl);
-
+    $newCon->bindElement("employeeId",$_id);
+    var_dump(method_exists($newCon,"findData"));
+    
+    /*var_dump($newCon::findData(
+                        [],
+                        1
+                    ));
+    */
     if($_GET["page"] == "dashboard"){
 
         Page::pageLeftMenu();
