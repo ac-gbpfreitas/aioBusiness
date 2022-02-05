@@ -25,7 +25,7 @@ if(!empty($_GET["page"])){
     $newCon::bindElement("productId",5);
     $result = $newCon->findData([],1);
     var_dump(
-        ProductInventoryConverter::convertFromStdClass($result)->getProductName()
+        ProductInventoryConverter::convertFromStdClass($result)[0]->getProductName()
     );
 
     if($_GET["page"] == "dashboard"){
