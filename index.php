@@ -124,7 +124,7 @@ if(!empty($_GET["page"])){
     
                     case "product":
                         TablePage::productsTableContent(
-                            RestAPI::getData("ProductInventory")
+                            RestAPI::getData("productInventory")
                         );
                     break;
     
