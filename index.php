@@ -64,9 +64,12 @@ if(!empty($_GET["page"])){
                 break;
 
                 case "product":
+                    /*
                     TablePage::productsTableContent(
                         RestAPI::getData("ProductInventory")
                     );
+                    */
+                    var_dump(RestAPI::getData("ProductInventory"));
                 break;
 
                 case "supplier":
