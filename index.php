@@ -21,14 +21,6 @@ if(!empty($_GET["page"])){
 
     //LoginManager::checkLogin();
     
-    /*
-    Test Connection
-    */
-    $newCon = new PDOMongo("employee");
-    $newCon::bindElement("employeeId",5);
-    $result = $newCon->findData([],1);
-    var_dump($result);
-    
     if($_GET["page"] == "dashboard"){
 
         Page::pageLeftMenu();
