@@ -25,9 +25,9 @@ if(!empty($_GET["page"])){
     Test Connection
     */
     $newCon = new PDOMongo("employee");
-    $newCon::bindElement("employeeId",3);
-    
-    var_dump($newCon::findData([],1));
+    $newCon::bindElement("employeeId",5);
+    $result = $newCon->findData([],1);
+    var_dump($result);
     
     if($_GET["page"] == "dashboard"){
 
