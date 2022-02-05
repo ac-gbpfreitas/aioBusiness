@@ -10,8 +10,6 @@ require_once("inc/Utilities/Dao/ShipperDAO.class.php");
 require_once("inc/Utilities/Dao/ProductInventoryDAO.class.php");
 require_once("inc/Utilities/Dao/ReceiptDAO.class.php");
 
-require_once("inc/Database/PDOMongo.class.php");
-
 require_once("inc/Utilities/Converters/EmloyeeConverter.class.php");
 require_once("inc/Utilities/Converters/SupplierConverter.class.php");
 require_once("inc/Utilities/Converters/OrderConverter.class.php");
@@ -23,10 +21,7 @@ require_once("inc/Utilities/Converters/ReceiptConverter.class.php");
 require_once("inc/Utilities/ParsePostForm.class.php");
 
     class RestAPI{
-        
-        $newCon = new Database("Employee");
-        var_dump($newCon);
-        
+                
         public static function getData($collection,$limit=5){
             $collection = strtolower($collection);
 
