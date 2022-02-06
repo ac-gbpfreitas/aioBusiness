@@ -28,7 +28,8 @@ date_default_timezone_set('America/Vancouver');
                 session_start();
 
                 $_SESSION["loggedin"] = true;
-                $_SESSION['username'] = $authUser;
+                $_SESSION['username'] = $authUser->getUsername();
+                $_SESSION['usertype'] = $authUser->getUserCategory();
 
                 $time = new DateTime();
                 $time->add(new DateInterval('PT' . 30 . 'M'));
