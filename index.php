@@ -90,61 +90,63 @@ if(!empty($_GET["page"])){
             }
 
         } else {
-            $action = "";
-            
-            if(isset($_POST["form"])){
-                $action = $_POST["form"];
-            }
+            if($_SESSION['usertype'] == 1) {
 
-            if( strpos($action, "add") !== false ){
-                RestAPI::postData($_POST);
-                Page::toastAdded();
-
-            } else if( strpos($action, "edit") !== false ){
-                RestAPI::updateData($_POST);
-                Page::toastUpdate();
-            }
-
-            if(isset($_GET["tab"])){
+                $action = "";
                 
-                switch($_GET["tab"]){
-                    case "employee":
-                        TablePage::employeeTableContent(
-                            RestAPI::getData("employee")
-                        );
-                    break;
-    
-                    case "order":
-                        TablePage::orderTableContent(
-                            RestAPI::getData("order")
-                        );
-                    break;
-    
-                    case "product":
-                        TablePage::productsTableContent(
-                            RestAPI::getData("ProductInventory")
-                        );
-                    break;
-    
-                    case "supplier":
-                        TablePage::supplierTableContent(
-                            RestAPI::getData("supplier")
-                        );
-                    break;
-    
-                    case "shipper":
-                        TablePage::shipperTableContent(
-                            RestAPI::getData("shipper")
-                        );
-                    break;
+                if(isset($_POST["form"])){
+                    $action = $_POST["form"];
                 }
 
-            } else {
-                TablePage::employeeTableContent(
-                    RestAPI::getData("employee")
-                );
+                if( strpos($action, "add") !== false ){
+                    RestAPI::postData($_POST);
+                    Page::toastAdded();
+
+                } else if( strpos($action, "edit") !== false ){
+                    RestAPI::updateData($_POST);
+                    Page::toastUpdate();
+                }
+
+                if(isset($_GET["tab"])){
+                    
+                    switch($_GET["tab"]){
+                        case "employee":
+                            TablePage::employeeTableContent(
+                                RestAPI::getData("employee")
+                            );
+                        break;
+        
+                        case "order":
+                            TablePage::orderTableContent(
+                                RestAPI::getData("order")
+                            );
+                        break;
+        
+                        case "product":
+                            TablePage::productsTableContent(
+                                RestAPI::getData("ProductInventory")
+                            );
+                        break;
+        
+                        case "supplier":
+                            TablePage::supplierTableContent(
+                                RestAPI::getData("supplier")
+                            );
+                        break;
+        
+                        case "shipper":
+                            TablePage::shipperTableContent(
+                                RestAPI::getData("shipper")
+                            );
+                        break;
+                    }
+
+                } else {
+                    TablePage::employeeTableContent(
+                        RestAPI::getData("employee")
+                    );
+                }
             }
-            
 
         }
 
@@ -162,33 +164,33 @@ if(!empty($_GET["page"])){
 
         if(!empty($_POST)){
 
-            $recipt_1 = RestAPI::getReciptReport($_POST,"date");
-            $recipt_2 = RestAPI::getReciptReport($_POST,"server");
-            $recipt_3 = RestAPI::getReciptReport($_POST,"paymentType");
-            
-            $goal = RestAPI::getGoal($_POST);
-            if(!empty($recipt_1)){
-
-                ChartPage::divGraphs();
-                #2
-                ChartPage::areaChartGoals(
-                    $recipt_1,$goal
-                );
-
-                ChartPage::barChartEmployee(
-                    $recipt_2
-                );
-
-                ChartPage::pieChartPaymentType(
-                    $recipt_3
-                );
+            if($_SESSION['usertype'] == 1) {
+                $recipt_1 = RestAPI::getReciptReport($_POST,"date");
+                $recipt_2 = RestAPI::getReciptReport($_POST,"server");
+                $recipt_3 = RestAPI::getReciptReport($_POST,"paymentType");
                 
-            } else {
-                ChartPage::resultNotFound($_POST);
+                $goal = RestAPI::getGoal($_POST);
+                if(!empty($recipt_1)){
+
+                    ChartPage::divGraphs();
+                    #2
+                    ChartPage::areaChartGoals(
+                        $recipt_1,$goal
+                    );
+
+                    ChartPage::barChartEmployee(
+                        $recipt_2
+                    );
+
+                    ChartPage::pieChartPaymentType(
+                        $recipt_3
+                    );
+                    
+                } else {
+                    ChartPage::resultNotFound($_POST);
+                }
             }
-            
         }
-        
     }
 
 } else {
