@@ -6,6 +6,7 @@
     use MongoDB\Driver\Command;
     use MongoDB\Driver\BulkWrite;
     use MongoDB\Driver\Exception\Exception;
+    use MongoDB\BSON\ObjectId;
 
     class PDOMongo{
 
@@ -50,7 +51,7 @@
                 self::$mongoUrl .= self::$mongoUser.":".self::$mongoPass;
                 self::$mongoUrl .= self::$mongoHost."/";
                 self::$mongoUrl .= self::$mongoName."?retryWrites=true&w=majority";
-                
+
                 //Test connection with the MongoDB
                 if(!self::testConnection()){
                     throw new Exception(
@@ -299,29 +300,37 @@
         }
 
         //Update Data from MongoDb
-        public function updateData(stdClass $newEntry){
+        public function updateData(stdClass $data){
+            //Get the ObjectId from stClass _id
+            $_id = new ObjectId($data->_id);
+            //Unset the value
+            unset($data->_id);
+            //Converts the stdClass into a assoc Array
+            $newEntry = json_decode(json_encode($data),true);
+
             try{
-                $bulk = new BulkWrite();
-                $bulk->update(
-                    ["_id" => $newEntry->_id],
-                    ['$set' => $newEntry],
-                    ['multi' => false, 'upsert' => false]
-                );
-
-                $mongoManager = new Manager(self::$mongoUrl);
-
-                $cursorInsert = $mongoManager->executeBulkWrite(
-                    self::$mongoName.".".self::$currentCollection,
-                    $bulk
-                );
-
-                return $cursorInsert->getInsertedCount();
-
                 if( !self::testConnection() ){
                     throw new Exception("This is not a valid type to insert.\n
                     The Element was not inserted\n
                     PDOMongo updateData()");  
-                } 
+                } else {
+                    $bulk = new BulkWrite();
+                    $bulk->update(
+                        ['_id' => $_id],
+                        ['$set' => $newEntry],
+                        ['multi' => false, 'upsert' => true]
+                    );
+
+                    $mongoManager = new Manager(self::$mongoUrl);
+
+                    $cursorInsert = $mongoManager->executeBulkWrite(
+                        self::$mongoName.".".self::$currentCollection,
+                        $bulk
+                    );
+
+                    return $cursorInsert->getInsertedCount();
+                }
+                
             } catch(Exception $errorMessage){
                 echo $errorMessage->getMessage();
             }
