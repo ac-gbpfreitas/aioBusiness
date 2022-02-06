@@ -23,25 +23,8 @@
                     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700" rel="stylesheet" type="text/css">
                     <link href="css/font-awesome.min.css" rel="stylesheet">
                     <link href="css/bootstrap.min.css" rel="stylesheet">
-                    <link href="css/style.css" rel="stylesheet">
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                    
-                    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-                    <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
-                    <!--[if lt IE 9]>
-                    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-                    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-                    <![endif]-->
-
-                    <!-- JS -->
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                    <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
-                    <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
-                    <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
-                
-                    <script type="text/javascript" src="js/script.js"></script>
+                    <link href="css/style.css" rel="stylesheet">
                 </head>
                 <body onload="startTime()">
                 <div id="clock"></div>
@@ -158,13 +141,21 @@
         //#512DA8
         private static function pageJavaScript(){
             $script = '
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesnt work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+
             <!-- JS -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
             <script src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
             <script src="js/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
             <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
+            <script type="text/javascript" src="js/script.js"></script>
             ';
             
             echo $script;
@@ -172,7 +163,7 @@
 
         public static function pageFooter(){
             $footer = self::pageJavaScript();
-            $footer .= '<script type="text/javascript" src="js/script.js"></script>
+            $footer .= ' 
             </body>
             </html>
             ';
