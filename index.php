@@ -9,21 +9,24 @@ require_once("inc/Utilities/Reports/OrderReport.class.php");
 
 require_once("inc/Utilities/Page.class.php");
 require_once("inc/Utilities/Html/DashboardPage.class.php");
-require_once("inc/Utilities/Html/TablePage.class.php");
-require_once("inc/Utilities/Html/FormHtml.class.php");
-require_once("inc/Utilities/Html/ChartPage.class.php");
+require_once("inc/Utilities/Html/Forms/FormHtml.class.php");
+require_once("inc/Utilities/Html/Tables/TablePage.class.php");
+require_once("inc/Utilities/Html/Charts/ChartPage.class.php");
 
 Page::pageHeader();
+
 
 if(!empty($_GET["page"])){
 
     LoginManager::checkLogin();
 
+
     if($_GET["page"] == "dashboard"){
 
         Page::pageLeftMenu();
         Page::pageContentTop();
-        
+
+
         TablePage::employeeTableContent(
             RestAPI::getData("employee")
         );
@@ -119,7 +122,7 @@ if(!empty($_GET["page"])){
     
                     case "product":
                         TablePage::productsTableContent(
-                            RestAPI::getData("productInventory")
+                            RestAPI::getData("ProductInventory")
                         );
                     break;
     
@@ -190,7 +193,6 @@ if(!empty($_GET["page"])){
 
 } else {
     header("Location: login.php");
-    //header("Location: index.php?page=dashboard");
 }
 
 Page::pageContentBottom();
