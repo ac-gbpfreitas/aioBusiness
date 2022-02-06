@@ -31,9 +31,46 @@
             return $modalForm;
         }
 
+        public static function editProductInventory(ProductInventory $product){
+            $modalForm = '
+            <div>';
+            
+            if($_SESSION['usertype'] == 1) {
+                $modalForm .= '
+                <button type="button" class="priori-edit-btn" data-bs-toggle="modal" data-bs-target="#myModal'.$product->getProductId().'">
+                    Edit
+                </button>
+                ';
+            } else {
+                $modalForm .= '<label class="priori-edit-btn">Edit</label>';
+            }
+                
+            $modalForm .= '<div class="modal priori-editForm" id="myModal'.$product->getProductId().'">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                            <h4 class="modal-title">Edit Form</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal">
+                                ×
+                            </button>
+                            </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">';
+                    $modalForm .= self::editFormProductInventory($product);
+                    $modalForm .= '</div>
+                </div>
+            </div>
+            <!-- Form End -->
+            ';
+            return $modalForm;
+        }
+
         private static function addFormProductInventory(){
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="productIn">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=product" method="POST" enctype="multipart/form-data" id="productIn">
                 <table class="table table-striped">
                     <tbody>
                         <tr>
@@ -118,38 +155,9 @@
             return $form;
         }
 
-        public static function editProductInventory(ProductInventory $product){
-            $modalForm = '
-            <div>
-                <button type="button" class="priori-edit-btn" data-bs-toggle="modal" data-bs-target="#myModal'.$product->getProductId().'">
-                    Edit
-                </button>
-                <div class="modal priori-editForm" id="myModal'.$product->getProductId().'">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                            <h4 class="modal-title">Edit Form</h4>
-                            <button type="button" class="close" data-bs-dismiss="modal">
-                                ×
-                            </button>
-                            </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">';
-                    $modalForm .= self::editFormProductInventory($product);
-                    $modalForm .= '</div>
-                </div>
-            </div>
-            <!-- Form End -->
-            ';
-            return $modalForm;
-        }
-
         private static function editFormProductInventory(ProductInventory $product){
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="product'.$product->getProductId().'">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=product" method="POST" enctype="multipart/form-data" id="product'.$product->getProductId().'">
                 <input type="hidden" name="_id" value='.$product->getId().'>
                 <input type="hidden" name="productId" value='.$product->getProductId().'>
                 <table class="table table-striped">

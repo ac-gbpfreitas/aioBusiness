@@ -3,35 +3,7 @@
     class FormOrder {
 
         //Order
-        public static function editOrder(Order $order){
-            $modalForm = '
-            <div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal'.$order->getOrderId().'">
-                    Edit
-                </button>
-                <div class="modal priori-editForm" id="myModal'.$order->getOrderId().'">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                            <h4 class="modal-title">Edit Form</h4>
-                            <button type="button" class="close" data-bs-dismiss="modal">
-                                ×
-                            </button>
-                            </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">';
-                    $modalForm .= self::editFormOrder($order);
-                    $modalForm .= '</div>
-                </div>
-            </div>
-            <!-- Form End -->
-            ';
-            return $modalForm;
-        }
-
+        
         public static function addOrder(){
             $modalForm = '
             <div>
@@ -53,6 +25,43 @@
                     <!-- Modal body -->
                     <div class="modal-body">';
                     $modalForm .= self::addFormOrder();
+                    $modalForm .= '</div>
+                </div>
+            </div>
+            <!-- Form End -->
+            ';
+            return $modalForm;
+        }
+
+        public static function editOrder(Order $order){
+            $modalForm = '
+            <div>';
+            
+            if($_SESSION['usertype'] == 1) {
+                $modalForm .= '
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal'.$order->getOrderId().'">
+                    Edit
+                </button>
+                ';
+            } else {
+                $modalForm .= '<label class="priori-edit-btn">Edit</label>';
+            }
+
+            $modalForm .= '<div class="modal priori-editForm" id="myModal'.$order->getOrderId().'">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                            <h4 class="modal-title">Edit Form</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal">
+                                ×
+                            </button>
+                            </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">';
+                    $modalForm .= self::editFormOrder($order);
                     $modalForm .= '</div>
                 </div>
             </div>
@@ -149,7 +158,7 @@
 
         private static function editFormOrder($order){
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="employee'.$order->getOrderId().'">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=order" method="POST" enctype="multipart/form-data" id="employee'.$order->getOrderId().'">
                 <input type="hidden" name="_id" value='.$order->getId().'>
                 <input type="hidden" name="orderId" value='.$order->getOrderId().'>
                 <table class="table table-striped">

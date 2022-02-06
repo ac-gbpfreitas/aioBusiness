@@ -33,11 +33,19 @@
 
         public static function editSupplier(Supplier $supplier){
             $modalForm = '
-            <div>
+            <div>';
+            
+            if($_SESSION['usertype'] == 1) {
+                $modalForm .= '
                 <button type="button" class="priori-edit-btn" data-bs-toggle="modal" data-bs-target="#myModal'.$supplier->getSupplierId().'">
                     Edit
                 </button>
-                <div class="modal priori-editForm" id="myModal'.$supplier->getSupplierId().'">
+                ';
+            } else {
+                $modalForm .= '<label class="priori-edit-btn">Edit</label>';
+            }
+
+            $modalForm .= '<div class="modal priori-editForm" id="myModal'.$supplier->getSupplierId().'">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                 
@@ -62,7 +70,7 @@
         
         private static function addFormSupplier(){
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="supplier">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=supplier" method="POST" enctype="multipart/form-data" id="supplier">
                 <table class="table table-striped">
                     <tbody>
                         <tr>
@@ -139,7 +147,7 @@
 
         private static function editFormSupplier(Supplier $supplier){
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="supplier'.$supplier->getSupplierId().'">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=supplier" method="POST" enctype="multipart/form-data" id="supplier'.$supplier->getSupplierId().'">
                 <input type="hidden" name="_id" value='.$supplier->getId().'>
                 <input type="hidden" name="supplier" value='.$supplier->getSupplierId().'>
                 <table class="table table-striped">

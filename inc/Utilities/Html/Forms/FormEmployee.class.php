@@ -5,14 +5,20 @@
         public static function addEmployee(){
             $modalForm = '
             <div>';
-                if($_SESSION['usertype'] == 1){
-                    $modalForm = '
+
+            if(isset($_GET["page"])){
+                if($_GET["page"] != "dashboard"){
+                    $modalForm .= '
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModalEmployee">
                         Add New Entry
                     </button>
                     ';
                 }
-            $modalForm .= '<div class="modal priori-editForm" id="myModalEmployee">
+            }
+
+            $modalForm .= '
+            </div>
+            <div class="modal priori-editForm" id="myModalEmployee">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                 
@@ -39,6 +45,7 @@
 
             $modalForm = '
             <div>';
+
             if($_SESSION['usertype'] == 1) {
                 $modalForm .= '
                 <button type="button" class="priori-edit-btn" data-bs-toggle="modal" data-bs-target="#myModal'.$employee->getEmployeeId().'">
@@ -83,7 +90,7 @@
             ];
 
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="employee'.$employee->getEmployeeId().'">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=employee" method="POST" enctype="multipart/form-data" id="employee'.$employee->getEmployeeId().'">
                 <input type="hidden" name="_id" value='.$employee->getId().'>
                 <input type="hidden" name="employeeId" value='.$employee->getEmployeeId().'>
                 <table class="table table-striped">
@@ -202,7 +209,7 @@
         private static function addFormEmployee(){
 
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="employee">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=employee" method="POST" enctype="multipart/form-data" id="employee">
                 <table class="table table-striped">
                     <tbody>
                         <tr>

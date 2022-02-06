@@ -5,7 +5,7 @@
         public static function addShipper(){
             $modalForm = '
             <div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModalShipper">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalShipper">
                     Add New Entry
                 </button>
                 <div class="modal priori-editForm" id="myModalShipper">
@@ -15,7 +15,7 @@
                             <!-- Modal Header -->
                             <div class="modal-header">
                             <h4 class="modal-title">Edit Form</h4>
-                            <button type="button" class="close" data-bs-dismiss="modal">
+                            <button type="button" class="close" data-dismiss="modal">
                                 ×
                             </button>
                             </div>
@@ -33,18 +33,26 @@
 
         public static function editShipper(Shipper $shipper){
             $modalForm = '
-            <div>
-                <button type="button" class="priori-edit-btn" data-bs-toggle="modal" data-bs-target="#myModal'.$shipper->getShipperId().'">
+            <div>';
+            
+            if($_SESSION['usertype'] == 1) {
+                $modalForm .= '
+                <button type="button" class="priori-edit-btn" data-toggle="modal" data-target="#myModal'.$shipper->getShipperId().'">
                     Edit
                 </button>
-                <div class="modal priori-editForm" id="myModal'.$shipper->getShipperId().'">
+                ';
+            } else {
+                $modalForm .= '<label class="priori-edit-btn">Edit</label>';
+            }
+
+            $modalForm .= '<div class="modal priori-editForm" id="myModal'.$shipper->getShipperId().'">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                 
                             <!-- Modal Header -->
                             <div class="modal-header">
                             <h4 class="modal-title">Edit Form</h4>
-                            <button type="button" class="close" data-bs-dismiss="modal">
+                            <button type="button" class="close" data-dismiss="modal">
                                 ×
                             </button>
                             </div>
@@ -62,7 +70,7 @@
         
         private static function addFormShipper(){
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="shipper">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=shipper" method="POST" enctype="multipart/form-data" id="shipper">
                 <table class="table table-striped">
                     <tbody>
                         <tr>
@@ -125,7 +133,7 @@
                 </table>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
                         Close
                     </button>
                     <input type="reset" class="btn btn-warning" value="Clear">
@@ -139,7 +147,7 @@
 
         private static function editFormShipper(Shipper $shipper){
             $form = '
-            <form action="'.$_SERVER['PHP_SELF'].'?page=tables" method="POST" enctype="multipart/form-data" id="shipper'.$shipper->getShipperId().'">
+            <form action="'.$_SERVER['PHP_SELF'].'?page=tables&tab=shipper" method="POST" enctype="multipart/form-data" id="shipper'.$shipper->getShipperId().'">
                 <input type="hidden" name="_id" value='.$shipper->getId().'>
                 <input type="hidden" name="shipperId" value='.$shipper->getShipperId().'>
                 <table class="table table-striped">
@@ -204,7 +212,7 @@
                 </table>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
                         Close
                     </button>
                     <input type="reset" class="btn btn-warning" value="Clear">
